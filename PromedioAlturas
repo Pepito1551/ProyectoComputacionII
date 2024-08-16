@@ -1,0 +1,77 @@
+#include <stdio.h>
+
+int main() {
+    float altura, sumaAlturaMujeres = 0, sumaAlturaHombres = 0;
+    int edad, sumaEdad = 0;
+    int contadorMujeres = 0, contadorParticipantes = 0;
+    int contadorHombres = 0;
+    char sexo;
+
+    while (1) {
+        // Se pide la altura
+        printf("Ingrese la altura en CM (ingrese un valor negativo para terminar):");
+        scanf("%f", &altura);
+
+        // Comprueba si la altura es negativa para finalizar el ingreso
+        if (altura < 0) {
+            break;
+        }
+
+        // Pedir la edad
+        printf("Ingrese la edad: ");
+        scanf("%d", &edad);
+
+        // Pedir el sexo
+        printf("Ingrese el sexo (F/M): ");
+        scanf(" %c", &sexo); 
+
+        // Acumular en el promedio de la altura de mujeres
+        if (sexo == 'F' || sexo == 'f') {
+            sumaAlturaMujeres += altura;
+            contadorMujeres++;
+        }
+
+        // Acumular en el promedio de la altura de hombres
+        if (sexo == 'M' || sexo == 'm') {
+            sumaAlturaHombres += altura;
+            contadorHombres++;
+        }
+
+        // Acumular para el promedio de la edad
+        sumaEdad += edad;
+        contadorParticipantes++;
+    }
+
+    // Calcular promedios
+
+    //Mujeres
+
+    if (contadorMujeres > 0) {
+        float promedioAlturaMujeres = sumaAlturaMujeres / contadorMujeres;
+        printf("El promedio de altura de las mujeres es: %.2f\n", promedioAlturaMujeres);
+    } else {
+        printf("No se ingresaron mujeres.\n");
+    }
+
+    //Hombres
+
+    if (contadorHombres > 0) {
+        float promedioAlturaHombres = sumaAlturaHombres / contadorHombres;
+        printf("El promedio de altura de los hombres es: %.2f\n", promedioAlturaHombres);
+    } else {
+        printf("No se ingresaron hombres.\n");
+    }
+    
+    //Edad
+    
+    if (contadorParticipantes > 0) {
+        float promedioEdad = (float)sumaEdad / contadorParticipantes;
+        printf("El promedio de edad de los participantes es: %.2f\n", promedioEdad);
+    } else {
+        printf("No se ingresaron participantes.\n");
+    }
+
+
+
+    return 0;
+}
