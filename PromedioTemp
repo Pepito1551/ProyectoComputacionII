@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+    float T1, T2;
+    float sumaTemperaturas = 0;
+    int contadorTemperaturas = 0;
+
+    while (1) {
+        // Lee T1 y verifica si es cero
+        printf("Ingrese T1 (ingrese 0 para terminar): ");
+        scanf("%f", &T1);
+        
+        if (T1 == 0) {
+            break;  // Salir del bucle si T1 es cero
+        }
+
+        // Lee T2
+        printf("Ingrese T2: ");
+        scanf("%f", &T2);
+
+        // Verifica si T1 está entre 5 y 15 (incluidos)
+        if (T1 >= 5 && T1 <= 15) {
+            sumaTemperaturas += T1;  // Acumular T1
+            contadorTemperaturas++;   //s Contar número de temperaturas válidas
+        }
+
+        // Verifica si T2 está entre 5 y 15 (incluidos)
+        if (T2 >= 5 && T2 <= 15) {
+            sumaTemperaturas += T2;  // Acumular T2
+            contadorTemperaturas++;   // Contar número de temperaturas válidas
+        }
+    }
+
+    // Calcula y muestra el promedio si hay temperaturas acumuladas
+
+    if (contadorTemperaturas > 0) {
+        float promedio = sumaTemperaturas / contadorTemperaturas;
+
+        printf("El promedio de las temperaturas entre 5° y 15° es: %.2f\n", promedio);
+    } else {
+        printf("No se ingresaron temperaturas entre 5° y 15°.\n");
+    }
+
+    return 0;
+}
